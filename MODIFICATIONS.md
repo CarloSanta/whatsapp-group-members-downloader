@@ -14,3 +14,11 @@ The following modifications have been made to the script:
 
 ---
 Date: April 4, 2026
+
+7.  **Hang prevention**: Group discovery no longer calls `getChats()`, which can wait indefinitely while refreshing metadata for unrelated groups.
+8.  **Local contact snapshot**: Contact names are read from the WhatsApp Web cache, avoiding remote profile/status calls that can remain unresolved.
+9.  **Timeouts and diagnostics**: Startup phases, per-contact progress, failures, and disconnections are now printed in the terminal.
+10. **Progressive CSV output**: The CSV is created before processing rows and written one contact at a time, preserving partial results if a later error occurs.
+
+---
+Date: September 23, 2026

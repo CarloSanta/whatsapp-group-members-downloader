@@ -21,8 +21,8 @@ This script allows you to export all contacts from a WhatsApp group into a CSV f
     ```bash
     node export-contacts.js "Your Group Name"
     ```
-2.  A QR code will appear in your terminal. Scan it using your WhatsApp mobile app (**Settings > Linked Devices > Link a Device**).
-3.  The script will find the group, fetch all participants, and save them to a file named `Your_Group_Name_contacts.csv`.
+2.  A QR code will appear in your terminal if there is no saved session. Scan it using your WhatsApp mobile app (**Settings > Linked Devices > Link a Device**).
+3.  The script will find the group, read all participants, and save them to a file named `Your_Group_Name_contacts.csv`.
 
 ## Features
 
@@ -36,4 +36,6 @@ This script allows you to export all contacts from a WhatsApp group into a CSV f
 ## Troubleshooting
 
 - If the group is not found, make sure you provide the **exact** name (including capitalization and special characters).
-- If you have many chats, it might take a few seconds to load them all.
+- The terminal prints the current phase and the progress for every contact. Operations have a timeout, so a stalled WhatsApp request cannot leave the script waiting forever.
+- Contact data is read from the local WhatsApp Web cache. If no participants are loaded, open that group once in WhatsApp Web and retry.
+- If WhatsApp has not resolved a participant's private `@lid` identifier to a phone number, the contact is still exported and the phone field is left blank.
